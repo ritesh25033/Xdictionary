@@ -6,14 +6,19 @@ const XDictionary = () => {
   const [result, setResult] = useState('');
 
   const dictionary = [
-    { word: "React", meaning: "A JavaScript library for building user interfaces." },
-    { word: "Component", meaning: "A reusable building block in React." },
-    { word: "State", meaning: "An object that stores data for a component." }
+    {
+      word: 'React',
+      meaning: 'A JavaScript library for building user interfaces.',
+    },
+    { word: 'Component', meaning: 'A reusable building block in React.' },
+    { word: 'State', meaning: 'An object that stores data for a component.' },
   ];
 
   const handleSearch = () => {
-    const foundWord = dictionary.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
-    
+    const foundWord = dictionary.find(
+      (item) => item.word.toLowerCase() === searchTerm.toLowerCase()
+    );
+
     if (foundWord) {
       setResult(foundWord.meaning);
     } else {
@@ -22,15 +27,17 @@ const XDictionary = () => {
   };
 
   return (
-    <div className="container">
-      <input 
-        type="text" 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-        placeholder="Search for a word..." 
+    <div className='container'>
+      <h1>Dictionary App</h1>
+      <input
+        type='text'
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder='Search for a word...'
       />
       <button onClick={handleSearch}>Search</button>
-      
+      <p>Definition:</p>
+
       {result && <p>{result}</p>}
     </div>
   );
